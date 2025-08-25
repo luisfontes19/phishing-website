@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>LetMeSurveyThatForYou — Research, Surveys & Insights</title>
+    <meta name="description"
+        content="LetMeSurveyThatForYou designs, runs, and analyzes surveys end‑to‑end. From questionnaire design and panel recruitment to data cleaning and executive‑ready insights." />
+    <meta name="theme-color" content="#4f46e5" />
+    <meta property="og:title" content="LetMeSurveyThatForYou — Research, Surveys & Insights" />
+    <meta property="og:description"
+        content="We handle surveys from strategy to storytelling. Fast, rigorous, privacy‑first." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://dummyimage.com/1200x630/4f46e5/ffffff&text=LetMeSurveyThatForYou" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+
+    <!-- Tailwind (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 800: '#3730a3', 900: '#312e81'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Alpine.js for simple interactivity -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <style>
+        :root {
+            --ring: 0 0% 100%;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .gradient {
+            background-image: radial-gradient(1200px 600px at 80% -10%, rgba(99, 102, 241, .25), transparent 60%), linear-gradient(180deg, #0b1020 0%, #0b1020 45%, #0e132b 100%);
+        }
+
+        .glass {
+            backdrop-filter: saturate(180%) blur(12px);
+            background: rgba(15, 23, 42, 0.65);
+        }
+    </style>
+
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "LetMeSurveyThatForYou",
+    "url": "https://www.letmesurveythatforyou.example",
+    "logo": "https://dummyimage.com/512x512/4f46e5/ffffff&text=LSTFY",
+    "sameAs": [
+      "https://www.linkedin.com/company/letmesurveythatforyou",
+      "https://twitter.com/lmstfy"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "sales@letmesurveythatforyou.com",
+      "areaServed": "Worldwide",
+      "availableLanguage": ["en"]
+    }
+  }
+  </script>
+</head>
+
+<body class="min-h-screen text-slate-100 bg-slate-950 [font-family:Inter,ui-sans-serif]">
+    <!-- Top Banner -->
+    <div class="bg-brand-600 text-white text-sm py-2 text-center">
+        <span class="font-medium">New:</span> Instant panel estimates in 60+ countries. <a href="#contact"
+            class="underline underline-offset-2">Get a quote</a>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/60 glass">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+                <a href="#home" class="flex items-center gap-3 group">
+                    <img src="logo.png" />
+                    <div class="leading-tight">
+                        <div class="text-white font-semibold">LetMeSurveyThatForYou</div>
+                        <div class="text-xs text-slate-400 -mt-0.5">Surveys · Panels · Insights</div>
+                    </div>
+                </a>
+                <nav class="hidden md:flex items-center gap-8 text-sm text-slate-200">
+                    <a href="#services" class="hover:text-white">Services</a>
+                    <a href="#how" class="hover:text-white">How it works</a>
+                    <a href="#pricing" class="hover:text-white">Plans</a>
+                    <a href="#about" class="hover:text-white">About</a>
+                    <a href="#faq" class="hover:text-white">FAQ</a>
+                    <a href="#contact"
+                        class="px-4 py-2 rounded-xl bg-white text-slate-900 font-semibold hover:bg-slate-200">Get a
+                        quote</a>
+                </nav>
+                <button class="md:hidden p-2" aria-label="Open menu" x-data="{open:false}" @click="open=!open"
+                    @click.outside="open=false">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                    <div class="absolute left-0 right-0 top-16 bg-slate-900/95 border-y border-white/10" x-show="open"
+                        x-transition>
+                        <div class="px-4 py-4 grid gap-3 text-slate-200 text-sm">
+                            <a href="#services" class="py-2" @click="open=false">Services</a>
+                            <a href="#how" class="py-2" @click="open=false">How it works</a>
+                            <a href="#pricing" class="py-2" @click="open=false">Plans</a>
+                            <a href="#about" class="py-2" @click="open=false">About</a>
+                            <a href="#faq" class="py-2" @click="open=false">FAQ</a>
+                            <a href="#contact" class="py-2" @click="open=false">Get a quote</a>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="gradient relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
+            <svg class="absolute -top-10 right-0 w-[44rem]" viewBox="0 0 800 600" fill="none">
+                <defs>
+                    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#818cf8" />
+                        <stop offset="100%" stop-color="#22d3ee" />
+                    </linearGradient>
+                </defs>
+                <circle cx="400" cy="300" r="280" stroke="url(#g1)" stroke-width="2" opacity=".6" />
+            </svg>
+        </div>
+
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
+            <div class="max-w-3xl" data-aos="fade-up">
+                <span
+                    class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand-300 bg-white/5 px-3 py-1 rounded-full ring-1 ring-white/10">Privacy‑first
+                    · Global panels · Fast turnaround</span>
+                <h1 class="mt-6 text-4xl sm:text-5xl font-extrabold leading-[1.1]">We design, run, and analyze surveys —
+                    end‑to‑end.</h1>
+                <p class="mt-5 text-slate-300 text-lg">LetMeSurveyThatForYou turns questions into confident decisions.
+                    From questionnaire design to executive‑ready insights, we manage every step with rigor and speed.
+                </p>
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <a href="#contact"
+                        class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold">Get a
+                        quote</a>
+                    <a href="#pricing"
+                        class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold">See
+                        plans</a>
+                </div>
+                <div class="mt-8 flex items-center gap-6 text-sm text-slate-300">
+                    <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check"></i> GDPR‑first</div>
+                    <div class="flex items-center gap-2"><i class="fa-regular fa-clock"></i> Results in days</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-globe"></i> 60+ countries</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust bar -->
+    <section class="bg-slate-900/60 border-y border-white/10">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+            <p class="text-center text-sm text-slate-400">Trusted by product, marketing, and people teams</p>
+            <div class="mt-5 grid grid-cols-2 md:grid-cols-6 gap-6 opacity-80">
+                <div class="h-10 bg-white/5 rounded-lg grid place-content-center text-slate-300">Fintech</div>
+                <div class="h-10 bg-white/5 rounded-lg grid place-content-center text-slate-300">eCommerce</div>
+                <div class="h-10 bg-white/5 rounded-lg grid place-content-center text-slate-300">SaaS</div>
+                <div class="h-10 bg-white/5 rounded-lg grid place-content-center text-slate-300">Healthcare</div>
+                <div class="h-10 bg-white/5 rounded-lg grid place-content-center text-slate-300">Education</div>
+                <div class="h-10 bg-white/5 rounded-lg grid place-content-center text-slate-300">Gaming</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl" data-aos="fade-up">
+                <h2 class="text-3xl font-bold">Services</h2>
+                <p class="mt-3 text-slate-300">Modular help or full‑stack execution. Pick what you need.</p>
+            </div>
+            <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card template repeated -->
+                <div class="rounded-2xl border border-white/10 p-6 bg-slate-900/50" data-aos="fade-up">
+                    <div class="text-brand-300 text-xl"><i class="fa-solid fa-compass-drafting"></i></div>
+                    <h3 class="mt-3 font-semibold">Survey Strategy</h3>
+                    <p class="mt-1 text-sm text-slate-300">Hypothesis mapping, sampling plans, feasibility checks, KPI
+                        alignment.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 p-6 bg-slate-900/50" data-aos="fade-up"
+                    data-aos-delay="50">
+                    <div class="text-brand-300 text-xl"><i class="fa-solid fa-pen-ruler"></i></div>
+                    <h3 class="mt-3 font-semibold">Questionnaire Design</h3>
+                    <p class="mt-1 text-sm text-slate-300">Bias‑aware wording, logic & branching, translations,
+                        piloting.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 p-6 bg-slate-900/50" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div class="text-brand-300 text-xl"><i class="fa-solid fa-users-viewfinder"></i></div>
+                    <h3 class="mt-3 font-semibold">Panel Recruitment</h3>
+                    <p class="mt-1 text-sm text-slate-300">Consumer, B2B, and niche expert audiences in 60+ countries.
+                    </p>
+                </div>
+                <div class="rounded-2xl border border-white/10 p-6 bg-slate-900/50" data-aos="fade-up">
+                    <div class="text-brand-300 text-xl"><i class="fa-solid fa-chart-simple"></i></div>
+                    <h3 class="mt-3 font-semibold">Fieldwork & Incentives</h3>
+                    <p class="mt-1 text-sm text-slate-300">Fraud prevention, device checks, incentive management, live
+                        dashboards.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 p-6 bg-slate-900/50" data-aos="fade-up"
+                    data-aos-delay="50">
+                    <div class="text-brand-300 text-xl"><i class="fa-solid fa-broom-ball"></i></div>
+                    <h3 class="mt-3 font-semibold">Data Cleaning & QA</h3>
+                    <p class="mt-1 text-sm text-slate-300">Attention checks, speeders/straightliners, deduplication,
+                        open‑end coding.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 p-6 bg-slate-900/50" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div class="text-brand-300 text-xl"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <h3 class="mt-3 font-semibold">Analysis & Reporting</h3>
+                    <p class="mt-1 text-sm text-slate-300">Crosstabs, significance testing, drivers analysis, executive
+                        storylines.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 p-6 bg-slate-900/50" data-aos="fade-up">
+                    <div class="text-brand-300 text-xl"><i class="fa-regular fa-face-smile"></i></div>
+                    <h3 class="mt-3 font-semibold">CSAT / NPS Programs</h3>
+                    <p class="mt-1 text-sm text-slate-300">Transactional & relational NPS, benchmarks, closed‑loop
+                        workflows.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 p-6 bg-slate-900/50" data-aos="fade-up"
+                    data-aos-delay="50">
+                    <div class="text-brand-300 text-xl"><i class="fa-solid fa-people-group"></i></div>
+                    <h3 class="mt-3 font-semibold">Employee & Pulse</h3>
+                    <p class="mt-1 text-sm text-slate-300">eNPS, DEI diagnostics, onboarding/exit pulses, leadership
+                        360s.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 p-6 bg-slate-900/50" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div class="text-brand-300 text-xl"><i class="fa-solid fa-flask"></i></div>
+                    <h3 class="mt-3 font-semibold">Concept & UX Tests</h3>
+                    <p class="mt-1 text-sm text-slate-300">Ad & concept tests, pricing studies, usability+survey mixed
+                        methods.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="py-20 bg-slate-900/60 border-y border-white/10">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl" data-aos="fade-up">
+                <h2 class="text-3xl font-bold">How it works</h2>
+                <p class="mt-3 text-slate-300">A clear, quality‑controlled path from question to decision.</p>
+            </div>
+            <ol class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <li class="rounded-2xl border border-white/10 p-6 bg-slate-950/60" data-aos="fade-up">
+                    <div class="text-2xl font-extrabold text-brand-400">1</div>
+                    <h3 class="mt-3 font-semibold">Scope & Feasibility</h3>
+                    <p class="mt-1 text-sm text-slate-300">Align on goals, target audience, sample size, timelines, and
+                        success criteria.</p>
+                </li>
+                <li class="rounded-2xl border border-white/10 p-6 bg-slate-950/60" data-aos="fade-up"
+                    data-aos-delay="50">
+                    <div class="text-2xl font-extrabold text-brand-400">2</div>
+                    <h3 class="mt-3 font-semibold">Design & Setup</h3>
+                    <p class="mt-1 text-sm text-slate-300">Questionnaire, logic, translations, and quality checks are
+                        built and piloted.</p>
+                </li>
+                <li class="rounded-2xl border border-white/10 p-6 bg-slate-950/60" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div class="text-2xl font-extrabold text-brand-400">3</div>
+                    <h3 class="mt-3 font-semibold">Field & Clean</h3>
+                    <p class="mt-1 text-sm text-slate-300">Recruit, launch, monitor, and clean data with fraud & bias
+                        protections.</p>
+                </li>
+                <li class="rounded-2xl border border-white/10 p-6 bg-slate-950/60" data-aos="fade-up"
+                    data-aos-delay="150">
+                    <div class="text-2xl font-extrabold text-brand-400">4</div>
+                    <h3 class="mt-3 font-semibold">Analyze & Decide</h3>
+                    <p class="mt-1 text-sm text-slate-300">Crosstabs, drivers, and a crisp story that informs your next
+                        move.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20" x-data="{annual:true}">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl" data-aos="fade-up">
+                <h2 class="text-3xl font-bold">Plans</h2>
+                <p class="mt-3 text-slate-300">Transparent pricing for teams of all sizes. Annual saves ~17%.</p>
+            </div>
+
+            <div class="mt-6 flex items-center gap-3">
+                <span class="text-sm text-slate-300">Monthly</span>
+                <button @click="annual=!annual"
+                    class="relative inline-flex h-6 w-11 items-center rounded-full bg-white/10">
+                    <span :class="annual ? 'translate-x-6' : 'translate-x-1'"
+                        class="inline-block h-4 w-4 transform rounded-full bg-white transition"></span>
+                </button>
+                <span class="text-sm text-slate-300">Annual <span
+                        class="ml-1 inline-block px-2 py-0.5 rounded-full bg-brand-700 text-white text-xs">Save</span></span>
+            </div>
+
+            <div class="mt-10 grid md:grid-cols-3 gap-6">
+                <!-- Starter -->
+                <div class="rounded-2xl border border-white/10 p-6 bg-slate-900/50 flex flex-col" data-aos="fade-up">
+                    <div class="text-sm font-semibold text-brand-300">Starter</div>
+                    <div class="mt-2 text-4xl font-extrabold">
+                        <span x-show="!annual">$1,500</span>
+                        <span x-show="annual">$1,250</span>
+                        <span class="text-base font-medium text-slate-300">/ project</span>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-300">For quick, directional insights.</p>
+                    <ul class="mt-4 space-y-2 text-sm text-slate-200 flex-1">
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i>
+                            Questionnaire creation (≤10 questions)</li>
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> Up to 200
+                            completes (consumer)</li>
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> Basic
+                            cleaning & crosstabs</li>
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> Summary
+                            deck (≤10 slides)</li>
+                    </ul>
+                    <a href="#contact"
+                        class="mt-6 px-5 py-3 rounded-xl bg-white text-slate-900 font-semibold text-center">Choose
+                        Starter</a>
+                </div>
+                <!-- Growth -->
+                <div class="rounded-2xl border-2 border-brand-600 p-6 bg-slate-900/70 shadow-[-8px_-8px_40px_rgba(79,70,229,.2)] flex flex-col"
+                    data-aos="fade-up" data-aos-delay="50">
+                    <div class="text-sm font-semibold text-brand-300">Growth <span
+                            class="ml-2 px-2 py-0.5 rounded-full bg-brand-700 text-white text-xs">Popular</span></div>
+                    <div class="mt-2 text-4xl font-extrabold">
+                        <span x-show="!annual">$4,900</span>
+                        <span x-show="annual">$4,150</span>
+                        <span class="text-base font-medium text-slate-300">/ project</span>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-300">Deeper dives and stakeholder‑ready outputs.</p>
+                    <ul class="mt-4 space-y-2 text-sm text-slate-200 flex-1">
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> Everything
+                            in Starter</li>
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> 1,000+
+                            completes or B2B targeting</li>
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> Advanced
+                            cleaning & open‑end coding</li>
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> Drivers
+                            analysis & recommendations</li>
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> Executive
+                            deck (≤30 slides)</li>
+                    </ul>
+                    <a href="#contact"
+                        class="mt-6 px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-center">Choose
+                        Growth</a>
+                </div>
+                <!-- Enterprise -->
+                <div class="rounded-2xl border border-white/10 p-6 bg-slate-900/50 flex flex-col" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div class="text-sm font-semibold text-brand-300">Enterprise</div>
+                    <div class="mt-2 text-4xl font-extrabold">Custom</div>
+                    <p class="mt-2 text-sm text-slate-300">Tailored programs, complex audiences, or ongoing trackers.
+                    </p>
+                    <ul class="mt-4 space-y-2 text-sm text-slate-200 flex-1">
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> Dedicated
+                            research lead</li>
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i>
+                            Multi‑market and mixed methods</li>
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> SSO, DPA,
+                            EU data hosting options</li>
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> Custom
+                            dashboards & APIs</li>
+                    </ul>
+                    <a href="#contact"
+                        class="mt-6 px-5 py-3 rounded-xl bg-white text-slate-900 font-semibold text-center">Talk to
+                        sales</a>
+                </div>
+            </div>
+
+            <!-- Add‑ons -->
+            <div class="mt-12" data-aos="fade-up">
+                <h3 class="text-xl font-semibold">Add‑ons</h3>
+                <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                    <div class="rounded-xl border border-white/10 p-4 bg-slate-900/50">Translations (per language)</div>
+                    <div class="rounded-xl border border-white/10 p-4 bg-slate-900/50">Expert & niche audiences</div>
+                    <div class="rounded-xl border border-white/10 p-4 bg-slate-900/50">Conjoint/MaxDiff modules</div>
+                    <div class="rounded-xl border border-white/10 p-4 bg-slate-900/50">Weekly/Monthly trackers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof -->
+    <section class="py-20 bg-slate-900/60 border-y border-white/10">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl" data-aos="fade-up">
+                <h2 class="text-3xl font-bold">Results teams can act on</h2>
+                <p class="mt-3 text-slate-300">A few words from customers.</p>
+            </div>
+            <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <blockquote class="rounded-2xl border border-white/10 p-6 bg-slate-950/60" data-aos="fade-up">
+                    <div class="text-yellow-300"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-regular fa-star"></i></div>
+                    <p class="mt-3 text-slate-200">“They turned a fuzzy brief into a clear, data‑driven decision in
+                        under two weeks.”</p>
+                    <footer class="mt-3 text-sm text-slate-400">— VP Product, SaaS</footer>
+                </blockquote>
+                <blockquote class="rounded-2xl border border-white/10 p-6 bg-slate-950/60" data-aos="fade-up"
+                    data-aos-delay="50">
+                    <div class="text-yellow-300"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                    <p class="mt-3 text-slate-200">“Sampling was spot on and the story made it easy to align
+                        leadership.”</p>
+                    <footer class="mt-3 text-sm text-slate-400">— CMO, eCommerce</footer>
+                </blockquote>
+                <blockquote class="rounded-2xl border border-white/10 p-6 bg-slate-950/60" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div class="text-yellow-300"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
+                    <p class="mt-3 text-slate-200">“Finally a research partner that cares about quality and speed.”</p>
+                    <footer class="mt-3 text-sm text-slate-400">— Head of People, Fintech</footer>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-10 items-start">
+                <div data-aos="fade-up">
+                    <h2 class="text-3xl font-bold">About LetMeSurveyThatForYou</h2>
+                    <p class="mt-3 text-slate-300">We’re a team of researchers, data scientists, and storytellers
+                        dedicated to making high‑quality survey research accessible and fast. We partner with product,
+                        marketing, and people teams to answer the questions that matter most.</p>
+                    <dl class="mt-6 grid grid-cols-2 gap-4 text-sm">
+                        <div class="rounded-xl border border-white/10 p-4 bg-slate-900/50">
+                            <dt class="text-slate-400">Founded</dt>
+                            <dd class="font-semibold">2025</dd>
+                        </div>
+                        <div class="rounded-xl border border-white/10 p-4 bg-slate-900/50">
+                            <dt class="text-slate-400">Coverage</dt>
+                            <dd class="font-semibold">60+ countries</dd>
+                        </div>
+                        <div class="rounded-xl border border-white/10 p-4 bg-slate-900/50">
+                            <dt class="text-slate-400">Focus</dt>
+                            <dd class="font-semibold">B2C, B2B, Employee</dd>
+                        </div>
+                        <div class="rounded-xl border border-white/10 p-4 bg-slate-900/50">
+                            <dt class="text-slate-400">Offices</dt>
+                            <dd class="font-semibold">Remote‑first</dd>
+                        </div>
+                    </dl>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="50">
+                    <h3 class="text-xl font-semibold">Security & Compliance</h3>
+                    <ul class="mt-3 space-y-2 text-sm text-slate-300">
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> GDPR‑first
+                            approach and DPA on request</li>
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> Optional
+                            EU data hosting</li>
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> SSO for
+                            Enterprise plans</li>
+                        <li class="flex gap-2"><i class="fa-regular fa-circle-check text-brand-400 mt-1"></i> PII
+                            minimization & role‑based access</li>
+                    </ul>
+
+                    <h3 class="mt-8 text-xl font-semibold">Industries</h3>
+                    <p class="mt-2 text-slate-300 text-sm">Fintech, SaaS, eCommerce, Healthcare, Education, Gaming, and
+                        more.</p>
+
+                    <h3 class="mt-8 text-xl font-semibold">Methods</h3>
+                    <p class="mt-2 text-slate-300 text-sm">Quantitative surveys, trackers, concept tests, pricing,
+                        diary+survey, UX survey overlays.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 bg-slate-900/60 border-y border-white/10">
+        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl" data-aos="fade-up">
+                <h2 class="text-3xl font-bold">Frequently asked questions</h2>
+            </div>
+            <div class="mt-8 divide-y divide-white/10 rounded-2xl border border-white/10 overflow-hidden">
+                <details class="group open:bg-slate-950/60">
+                    <summary class="cursor-pointer list-none px-6 py-4 flex items-center justify-between">
+                        <span class="font-medium">How fast can you turn around a project?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-sm text-slate-300">Simple projects complete in 1–2 weeks. Complex,
+                        multi‑market work varies. We’ll share a timeline in your quote.</div>
+                </details>
+                <details class="group">
+                    <summary class="cursor-pointer list-none px-6 py-4 flex items-center justify-between">
+                        <span class="font-medium">Can you target niche B2B audiences?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-sm text-slate-300">Yes. We source via vetted expert networks and panels.
+                        Feasibility and pricing depend on role seniority and geography.</div>
+                </details>
+                <details class="group">
+                    <summary class="cursor-pointer list-none px-6 py-4 flex items-center justify-between">
+                        <span class="font-medium">What tools do you use?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-sm text-slate-300">We’re platform‑agnostic and can use your preferred
+                        stack. We commonly work with Qualtrics, Typeform, SurveyMonkey, and custom dashboards.</div>
+                </details>
+                <details class="group">
+                    <summary class="cursor-pointer list-none px-6 py-4 flex items-center justify-between">
+                        <span class="font-medium">Do you provide raw data?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-sm text-slate-300">Absolutely. We deliver raw CSV/XLSX, codebook, and
+                        summary decks. Enterprise can add dashboards and APIs.</div>
+                </details>
+                <details class="group">
+                    <summary class="cursor-pointer list-none px-6 py-4 flex items-center justify-between">
+                        <span class="font-medium">How do you handle privacy?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-sm text-slate-300">We follow a GDPR‑first approach: data minimization,
+                        DPAs, optional EU hosting, and role‑based access. We avoid collecting unnecessary PII.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20">
+        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-10">
+                <div data-aos="fade-up">
+                    <h2 class="text-3xl font-bold">Get a quote</h2>
+                    <p class="mt-3 text-slate-300">Tell us about your audience, sample size, markets, and timeline.
+                        We’ll respond with feasibility and pricing.</p>
+
+                    <div class="mt-6 space-y-3 text-sm text-slate-300">
+                        <div class="flex gap-3 items-start">
+                            <i class="fa-solid fa-envelope mt-0.5 text-brand-400"></i>
+                            <a href="mailto:sales@letmesurveythatforyou.com"
+                                class="hover:underline">sales@letmesurveythatforyou.com</a>
+                        </div>
+                        <div class="flex gap-3 items-start">
+                            <i class="fa-solid fa-calendar-check mt-0.5 text-brand-400"></i>
+                            <a href="#" class="hover:underline">Book a 20‑min consult</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="rounded-2xl border border-white/10 bg-slate-900/60 p-6" data-aos="fade-up"
+                    data-aos-delay="50" id="quote-form">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-slate-300">Full name</label>
+                            <input required type="text" name="name"
+                                class="mt-1 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-white placeholder:text-slate-500"
+                                placeholder="Jane Doe">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-slate-300">Work email</label>
+                            <input required type="email" name="email"
+                                class="mt-1 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-white placeholder:text-slate-500"
+                                placeholder="jane@company.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-slate-300">Company</label>
+                            <input type="text" name="company"
+                                class="mt-1 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-white placeholder:text-slate-500"
+                                placeholder="Company Inc.">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-slate-300">Budget (approx.)</label>
+                            <select name="budget"
+                                class="mt-1 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-white">
+                                <option value="undisclosed">Undisclosed</option>
+                                <option value="<5k">Under $5k</option>
+                                <option value="5-15k">$5k–$15k</option>
+                                <option value=">15k">Over $15k</option>
+                            </select>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block text-sm text-slate-300">What do you want to learn?</label>
+                            <textarea required name="message" rows="5"
+                                class="mt-1 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-white placeholder:text-slate-500"
+                                placeholder="Goals, audience, markets, sample size, deadlines..."></textarea>
+                        </div>
+                        <div class="sm:col-span-2 flex items-start gap-3 text-sm">
+                            <input required id="consent" type="checkbox"
+                                class="mt-1 rounded border-white/20 bg-white/5">
+                            <label for="consent" class="text-slate-300">I agree to the <a href="#"
+                                    class="underline">Privacy Policy</a> and consent to be contacted.</label>
+                        </div>
+                    </div>
+                    <button type="submit"
+                        class="mt-4 w-full px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold">Request
+                        quote</button>
+                    <p id="form-success" class="hidden mt-3 text-sm text-green-400">Thanks! We’ll get back to you
+                        shortly.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-slate-950">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-3">
+                        <img src="logo.png" alt="LetMeSurveyThatForYou" />
+                        <span class="font-semibold">LetMeSurveyThatForYou</span>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-400 max-w-xs">Surveys, panels, and insight storytelling for
+                        fast‑moving teams.</p>
+                </div>
+                <div>
+                    <div class="font-semibold">Company</div>
+                    <ul class="mt-3 space-y-2 text-sm text-slate-300">
+                        <li><a href="#about" class="hover:underline">About</a></li>
+                        <li><a href="#services" class="hover:underline">Services</a></li>
+                        <li><a href="#pricing" class="hover:underline">Plans</a></li>
+                        <li><a href="#faq" class="hover:underline">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="font-semibold">Legal</div>
+                    <ul class="mt-3 space-y-2 text-sm text-slate-300">
+                        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:underline">Terms of Service</a></li>
+                        <li><a href="#" class="hover:underline">DPA</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="font-semibold">Newsletter</div>
+                    <form class="mt-3 flex gap-2" id="news-form">
+                        <input type="email" required placeholder="you@company.com"
+                            class="flex-1 rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-white placeholder:text-slate-500">
+                        <button class="px-4 py-2 rounded-xl bg-white text-slate-900 font-semibold"
+                            type="submit">Join</button>
+                    </form>
+                    <p id="news-success" class="hidden mt-2 text-xs text-green-400">Thanks! You’re on the list.</p>
+                    <div class="mt-4 flex items-center gap-4 text-slate-300">
+                        <a aria-label="LinkedIn" href="#" class="hover:text-white"><i
+                                class="fa-brands fa-linkedin"></i></a>
+                        <a aria-label="X" href="#" class="hover:text-white"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a aria-label="Email" href="mailto:hello@letmesurveythatforyou.com" class="hover:text-white"><i
+                                class="fa-regular fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 text-xs text-slate-500">© <span id="year"></span> LetMeSurveyThatForYou. All rights
+                reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Cookie Notice -->
+    <div id="cookie"
+        class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[95%] sm:w-auto max-w-xl rounded-2xl border border-white/10 bg-slate-900/90 p-4 shadow-2xl hidden">
+        <div class="flex items-start gap-3 text-sm text-slate-200">
+            <i class="fa-solid fa-cookie-bite text-brand-400 mt-0.5"></i>
+            <p class="flex-1">We use cookies to improve experience. By using our site, you agree to our <a href="#"
+                    class="underline">Privacy Policy</a>.</p>
+            <button class="px-3 py-1.5 rounded-lg bg-white text-slate-900 font-medium" id="cookie-accept">OK</button>
+        </div>
+    </div>
+
+    <!-- Back to top -->
+    <a href="#home"
+        class="fixed bottom-6 right-6 h-12 w-12 rounded-full bg-brand-600 hover:bg-brand-500 text-white grid place-content-center shadow-lg"
+        aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Init AOS
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({ once: true, duration: 600, easing: 'ease-out-cubic' });
+        });
+
+        // Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Cookie bar
+        const cookieKey = 'lmstfy_cookie_ok_v1';
+        const cookieEl = document.getElementById('cookie');
+        if (!localStorage.getItem(cookieKey)) cookieEl.classList.remove('hidden');
+        document.getElementById('cookie-accept').addEventListener('click', () => {
+            localStorage.setItem(cookieKey, '1');
+            cookieEl.classList.add('hidden');
+        });
+
+        // Forms: fake success (replace with your backend)
+        document.getElementById('quote-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            e.target.reset();
+            document.getElementById('form-success').classList.remove('hidden');
+        });
+        document.getElementById('news-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            e.target.reset();
+            document.getElementById('news-success').classList.remove('hidden');
+        });
+    </script>
+</body>
+
+</html>
